@@ -1,1 +1,5 @@
 Iconr
+.dropbox
+*.aux
+*.log
+*.out

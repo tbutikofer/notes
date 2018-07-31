@@ -1,0 +1,135 @@
+\section{Definitions}
+\begin{definition}{Set}{DefSet}
+	\notation{$X=\{x\}$}
+	\begin{qualities}
+		\quality{Is empty or consists of distinguishable subsets/elements $x\in X$.}
+	\end{qualities}
+\end{definition}
+
+\begin{definition}{Function}{DefFunction}
+	\notation{$f:X\rightarrow Y$}
+	\begin{components}
+		\component{\defref{DefSet} Domain}{$X$}
+		\component{\defref{DefSet} Codomain}{$Y$}
+	\end{components}
+	\begin{qualities}
+		\quality{Mapping of $X$ onto $Y$:\\
+		A function $f$ relates each $x\in X$ to exactly one element $f(x)\in Y$.}
+	\end{qualities}
+	\begin{classifications}
+		\classification{injective}{For any $a,b\in X\quad a\neq b$ the result is different $f(a)\neq f(b)$.}
+		\classification{surjective}{For any $y\in Y$ there is a $x\in X$ such that $f(x)=y$.}
+	\end{classifications}
+\end{definition}
+
+\begin{definition}{Group}{DefGroup}
+	\notation{$\mathds{G}\equiv(G,\circ)$}
+	\begin{components}
+		\component{\defref{DefSet}}{$G$}
+		\component{\defref{DefFunction}}{$\circ:G\times G\rightarrow G$}
+	\end{components}
+	\begin{qualities}
+		\quality{Associativity:\\
+		For all $a,b,c\in G$: $a\circ(b\circ c)=(a\circ b)\circ c$}
+		\quality{Identity element:\\
+		There exists an element $\mathds{1}_\circ\in G$, for which $\mathds{1}_\circ\circ a=a\circ\mathds{1}_\circ=a$ for all $a\in G$.}
+		\quality{Inverse element:\\
+		For each $a\in G$, there exists an element $b\in G$ such that $a\circ b=\mathds{1}_\circ$.}
+		\end{qualities}
+	\begin{classifications}
+		\classification{abelian}{For any $a,b\in G$, $a\circ b=b\circ a$.}
+	\end{classifications}
+\end{definition}
+
+\begin{definition}{Ideal}{DefIdeal}
+	\begin{components}
+		\component{\defref{DefGroup}}{$(G,\circ)$}
+		\component{\defref{DefSet} Ideal}{$I_\circ\subset G$}
+	\end{components}
+	\begin{qualities}
+		\quality{$I_\circ$ "absorbs" element of $G$ by application of $\circ$:\\
+		$a\circ b\in I_\circ$, $\forall a\in G, b\in I_\circ$\\
+$b\circ a\in I_\circ$, $\forall a\in G, b\in I_\circ$		
+		}
+	\end{qualities}
+\end{definition}
+
+\begin{definition}{Algebraic Field}{DefAlgebraicField}
+	\notation{$\mathbb{K}\equiv(K,+,\cdot)$}
+	\begin{components}
+		\component{\defref{DefSet}}{$K$}
+		\component{\defref{DefFunction} Addition}{$+:K\times K\rightarrow K$\qquad ($\mathds{1}_+\equiv 0$)}		
+		\component{\defref{DefFunction} Multiplication}{$\cdot:K\times K\rightarrow K$\qquad ($\mathds{1}_\cdot\equiv 1$)}		
+	\end{components}
+	\begin{qualities}
+		\quality{$(K,+)$ is a \defref{DefGroup}[abelian]}
+		\quality{$(K\setminus\mathds{1}_+,\cdot)$ is a \defref{DefGroup}[abelian]}
+		\quality{Distributivity:\\
+		$a\cdot(b+c)\equiv a\cdot b+a\cdot c$, which is equivalent to $\{\mathds{1}_+\}$ is an \defref{DefIdeal} $I_\cdot\subset K$.
+		}
+	\end{qualities}
+\end{definition}
+
+\begin{definition}{Topological Space}{DefTopologicalSpace}
+	\begin{components}
+		\component{Set $X$}
+	\end{components}
+	\begin{qualities}
+		\quality{Neighbourhood topology:
+		\begin{enumerate}
+		\item Neighbourhoods of $x$: $N_x\equiv\{N\subset X|x\in N\}$.
+		\item Any neighbourhood $N_x$ contains a neighbourhood $N'_x$ such that $N_x$ is a neighbourhood of each point of $N'_x$.
+		\end{enumerate}}
+	\end{qualities}
+	\begin{classifications}
+		\classification{contractible}{The identity map on $X$ is null-homotopic, i.e.  it is homotopic to some constant map.}
+	\end{classifications}
+\end{definition}
+
+\begin{definition}{Hausdorff  Space}{DefHausdorffSpace}
+	\begin{components}
+		\component{\defref{DefTopologicalSpace} $X$}
+	\end{components}
+	\begin{qualities}
+		\quality{Separation:\\
+		Two distinct elements have some disjoint neighbourhoods.}
+	\end{qualities}
+\end{definition}
+
+\begin{definition}{Topological Manifold}{DefTopologicalManifold}
+	\begin{components}
+		\component{\defref{DefTopologicalSpace} $X$}
+		\component{\defref{DefAlgebraicField} $\mathbb{K}$}
+	\end{components}
+	\begin{qualities}
+		\quality{Each $x\in X$ has a neighbourhood which is a \defref{DefTopologicalSpace}[contractible].}
+	\end{qualities}
+	\begin{quantities}
+		\quantity{dimension}{Minimum number of functions $f:N_x\rightarrow \mathbb{K}$ required to uniquely describe $x$ by its function values within $N_x$\footnote{This has some similarities to the definition of an entropy: assuming the function's codomains consist only of $\{0,1\}$, the dimension corresponds to the number of bits needed to encode all information about $x\in X$. }. Such a minimal set of functions is a chart on $N_x$, its elements are called coordinate functions.}
+	\end{quantities}
+\end{definition}
+
+\begin{definition}{Differentiable Manifold}{DefDifferentiableManifold}
+	\begin{components}
+		\component{\defref{DefTopologicalManifold} $M$}
+	\end{components}
+	\begin{qualities}
+		\quality{The coordinate functions of any two intersecting neighbourhoods $N_x\bigcap N_y\neq\emptyset$ are $C^k$ differentiable with respect to each other.\\This also implies the existence of a tangent space $T_xM$ in each point $x\in M$: For an arbitrary function $f:M\rightarrow \mathbb{K}$, the derivatives along the coordinate functions gives a vector of the tangent space.}
+	\end{qualities}
+	\begin{quantities}
+		\quantity{differentiability class}{$C^k$: Up to k-th derivatives exist.}
+	\end{quantities}
+\end{definition}
+
+\begin{definition}{Smooth Manifold}{DefSmoothManifold}
+	\begin{components}
+		\component{\defref{DefDifferentiableManifold}(differentiability class: $C^\infty$) $M$}
+	\end{components}
+\end{definition}
+
+\begin{definition}{Riemannian Manifold}{DefRiemannianManifold}
+	\begin{components}
+		\component{\defref{DefSmoothManifold} $M$}
+	\end{components}
+\end{definition}
+%\marginpar{\hfill\includegraphics[width=\marginparwidth]{IMG_1571-001.jpg}

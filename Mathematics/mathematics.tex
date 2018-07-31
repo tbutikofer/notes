@@ -1,0 +1,97 @@
+\documentclass[11pt,twoside,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref,amsmath,amssymb,dsfont}
+  
+%\newsavebox{\definitionBox}
+\newenvironment{definition}[2]{
+%\begin{lrbox}{\definitionBox}\begin{minipage}{\textwidth}
+\subsection{#1}\label{#2}\marginpar{\hfill #1}
+\newenvironment{notations}
+{
+	Notation:
+	\newenvironment{notationitem}[1]{\item ####1}{}
+	\begin{list}{}{
+	\setlength{\topsep}{0em}
+	\setlength{\itemsep}{0em}
+	\setlength{\parsep}{0em}
+%	\setlength{\leftmargin}{1em}
+	}
+}{\end{list}}
+\newenvironment{components}
+{
+	Components:
+	\newenvironment{component}[1]{\item ####1: }{}
+	\begin{list}{$\circ$}{
+	\setlength{\topsep}{0em}
+	\setlength{\itemsep}{0em}
+	\setlength{\parsep}{0em}
+%	\setlength{\leftmargin}{1em}
+	}
+}{\end{list}}
+\newenvironment{operations}
+{
+	Operations:
+	\newenvironment{operation}[0]{\item}{}
+	\begin{list}{$\circ$}{
+	\setlength{\topsep}{0em}
+	\setlength{\itemsep}{0em}
+	\setlength{\parsep}{0em}
+	}
+}{\end{list}}
+\newenvironment{quantities}
+{
+	Quantities:
+	\newenvironment{quantity}[1]{\item ####1\\}{}
+	\begin{list}{$\circ$}{
+	\setlength{\topsep}{0em}
+	\setlength{\itemsep}{0em}
+	\setlength{\parsep}{0em}
+	}
+}{\end{list}}
+\newenvironment{qualities}
+{
+	Qualitites:
+	\newenvironment{quality}[0]{\item}{}
+	\begin{list}{$\circ$}{
+	\setlength{\topsep}{0em}
+	\setlength{\itemsep}{0em}
+	\setlength{\parsep}{0em}
+	}
+}{\end{list}}
+\newenvironment{classifications}
+{
+	Classifications:
+	\newenvironment{classification}[1]{\item ####1\\}{}
+	\begin{list}{$\circ$}{
+	\setlength{\topsep}{0em}
+	\setlength{\itemsep}{0em}
+	\setlength{\parsep}{0em}
+	}
+}{\end{list}}
+}{
+%\end{minipage}\end{lrbox}\fbox{\usebox{\definitionBox}}
+}
+\newcommand{\defref}[1]{\hyperref[#1]{\nameref{#1}}}
+\newcommand{\notation}[1]{\begin{notations}\notationitem{#1}\end{notations}}
+
+
+%\begin{definition}{Complex Manifold}{DefComplexManifold}
+%	\begin{components}
+%		\component{}
+%	\end{components}
+%	\begin{operations}
+%		\operation{}
+%	\end{operations}
+%	\begin{quantities}
+%		\quantity{}
+%	\end{quantities}
+%	\begin{qualities}
+%		\quality{}
+%	\end{qualities}
+%\end{definition}
+
+
+\begin{document}
+\title{Mathematics}
+\include{definitions}
+\end{document}
